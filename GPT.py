@@ -16,7 +16,7 @@ n_layer = 6
 dropout = 0.2
 # ------------
 
-torch.manual_seed(1337)
+torch.manual_seed(101)
 
 # wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
 with open('Input_Data/input.txt', 'r', encoding='utf-8') as f:

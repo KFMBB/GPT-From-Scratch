@@ -69,6 +69,7 @@ def get_batch(split):
     x, y = x.to(device), y.to(device)
     return x, y
 
+# A Bi-Gram model is an n-gram language model that predicts the probability of a word in a sentence based on the previous one word.
 class BigramLanguageModel(nn.Module):
     def __init__(self, vocab_size):
         super().__init__()
@@ -76,7 +77,7 @@ class BigramLanguageModel(nn.Module):
         # This layer acts as a lookup table, it associates each token with a vocab_size-dimensional vector.
         self.token_embedding_table = nn.Embedding(vocab_size, vocab_size)
 
-    # Forward Propagation
+    # Feed forward
     def forward(self, idx, targets=None):
 
         # idx and targets are both (B,T) tensor of integers
@@ -137,13 +138,13 @@ for iter in range(max_iters):
         print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
 
     # sample a batch of data
-    xb, yb = get_batch('train')
+    xb, yb = get_batch('train') # Get the 32X8 matrix repsenting the data going into the model
 
     # evaluate the loss
-    logits, loss = model(xb, yb)
-    optimizer.zero_grad(set_to_none=True)
-    loss.backward()
-    optimizer.step()
+    logits, loss = model(xb, yb) # Feed forward
+    optimizer.zero_grad(set_to_none=True) # Reset gradients before computing new ones
+    loss.backward() # Compute gradients
+    optimizer.step() # Update model parameters
 
 # generate from the model
 context = torch.zeros((1, 1), dtype=torch.long, device=device)

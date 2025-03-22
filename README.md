@@ -70,7 +70,7 @@ pip install torch numpy tqdm
 
 ### **2. Clone the Repository**
 ```bash
-git clone <your-github-repo-url>
+git clone <https://github.com/KFMBB/GPT-From-Scratch.git>
 cd <your-project-directory>
 ```
 
